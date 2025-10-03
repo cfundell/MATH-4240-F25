@@ -7,13 +7,19 @@ typedef struct node node;
 struct node
 {
     int position; 
-    int value;
+    char value;
     node* next;
 };
 
-void GenerateList(node** head, const int num);
-void Print(const int forward, const node* head);
-int GetKey();
-void SearchList(const node* head, const int key);
+void DeleteStack(node** top);
+void DisplayOptions();
+void PrintNode(node* top);
+void DisplayStack(node* top);
+void GetStackSize(node* top, int* stack_size);
+int QueryOption();
+void ExecuteOption(const int option, node** top);
+char Peek(node* top);
+void Pop(node** top, int* output);
+void Push(const char input, node** top);
 
 #endif

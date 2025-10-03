@@ -2,15 +2,15 @@
 CC = gcc
 FFLAGS = -O3 -Wall
 LFFLAG = 
-OBJECTS = main.o \
-Option.o \
-DisplayOptions.o \
+OBJECTS = Option.o \
 Push.o \
 Pop.o \
 Peek.o \
-DisplayStack.o \ 
+DisplayStack.o \
 GetStackSize.o \
-DeleteStack.o
+DeleteStack.o \
+DisplayOptions.o \
+main.o
 
 .PHONY: clean help
 

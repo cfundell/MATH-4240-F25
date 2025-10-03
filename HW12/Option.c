@@ -10,20 +10,21 @@ int QueryOption() {
 }
 
 void ExecuteOption(const int option, node** top) {
-    int value;
+    char value;
+    int size;
     switch(option) {
         case 0: // dispaly possible operations
             DisplayOptions();
             break;
         case 1: // enter new value and push new node to stack
-            printf("Enter integer value: ");
-            scanf("%i", &value);
+            printf("Enter character value: ");
+            scanf(" %c", &value);
             Push(value, top);
             break;
         case 2: // pop value from top of stack
             if (*top!=NULL) {
                 Pop(top,&value);
-                printf("Popped value: %i\n", value);
+                printf("Popped value: %c\n", value);
             }
             else {
                 printf("Stack is empty, no value to pop.");
@@ -31,7 +32,7 @@ void ExecuteOption(const int option, node** top) {
         case 3: // peek at top value
             if((*top)!=NULL) {
                 value = Peek(*top);
-                printf("Top value is %i\n", value);
+                printf("Top value is %c\n", value);
             }
             else {
                 printf("Stack is empty, no value to fetch.");
@@ -41,8 +42,8 @@ void ExecuteOption(const int option, node** top) {
             DisplayStack(*top);
             break;
         case 5: // print stack size
-            GetStackSize(*top,&value);
-            printf("Stack size is %i\n",value);
+            GetStackSize(*top,&size);
+            printf("Stack size is %i\n",size);
             break;
         default:
             printf("Error! Given option is unavailable. Please try again.\n");

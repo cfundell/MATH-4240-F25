@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "node.h"
 
-void Push(const int input, node** top) {
+void Push(const char input, node** top) {
     if (*top == NULL) {
         *top = (node*)malloc(sizeof(struct node));
         (*top)->next = NULL;

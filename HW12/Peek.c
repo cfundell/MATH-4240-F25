@@ -1,5 +1,5 @@
 #include "node.h"
 
-int Peek(node* top) {
+char Peek(node* top) {
     return top->value;
 }
