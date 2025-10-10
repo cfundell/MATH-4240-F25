@@ -44,6 +44,6 @@ vector matrix_vector_mult(const matrix* A, const vector* x);
 vector solve(const matrix* A, const vector* b);
 // HW14 functions (eigenvalues)
 double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A);
-double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix* A)
+double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix* A);
 
 #endif

@@ -1,60 +1,54 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h> // For rand() and srand()
+#include <time.h>   // For time()
 #include "matrix.h"
 
 int main() {
+    srand(time(NULL));
+
     // make matrices
     matrix A = new_matrix(5,5);
-    matrix B = new_matrix(5,5);
+    matrix L = new_matrix(5,5);
+    matrix LT = new_matrix(5,5);
+    double rand_val;
 
     for (int i = 1; i <= 5; i++) {
         for (int j = 1; j <= 5; j++) {
-            mget(A,i,j) = -1.0*(i==j) + 2.0*(i-1==j) + 2.0*(j-1==i);
-            mget(B,i,j) = 2.0*(i==j) + 1.0*(i-1==j) + 1.0*(j-1==i);
+            rand_val = (double)rand() / (double)RAND_MAX;
+            mget(L,i,j) = rand_val * (i>j) + 1.0e0*(i==j) + 0.0e0*(i<j);
+            mget(LT,j,i) = rand_val * (i>j) + 1.0e0*(i==j) + 0.0e0*(i<j);
         }
     }
 
-    // print matrices
-    print_matrix(&A);
-    print_matrix(&B);
-    
-    // add, subtract, multiply
-    matrix C = matrix_add(&A,&B);
-    print_matrix(&C);
-    matrix E = matrix_mult(&A,&B);
-    print_matrix(&E);
+    // A = L*LT
+    A = matrix_mult(&L,&LT);
 
-    // vectors 
+    // create random vector 
     vector x = new_vector(5);
-    vector y = new_vector(5);
 
-    vget(x,1) = 1.0;
-    vget(x,2) = 2.0;
-    vget(x,3) = 3.0;
-    vget(x,4) = 4.0;
-    vget(x,5) = 5.0;
+    vget(x,1) = (double)rand() / (double)RAND_MAX;
+    vget(x,2) = (double)rand() / (double)RAND_MAX;
+    vget(x,3) = (double)rand() / (double)RAND_MAX;
+    vget(x,4) = (double)rand() / (double)RAND_MAX;
+    vget(x,5) = (double)rand() / (double)RAND_MAX;
 
-    vget(y,1) = 5.0;
-    vget(y,2) = 4.0;
-    vget(y,3) = 3.0;
-    vget(y,4) = 2.0;
-    vget(y,5) = 1.0;
 
-    // print vectors
+    // print matrices
+    print_matrix(&L);
+    print_matrix(&LT);
+    print_matrix(&A);
     print_vector(&x);
-    print_vector(&y);
 
-    // add, subtract, dot
-    vector z = vector_add(&x,&y);
-    print_vector(&z);
-    double d = vector_dot_mult(&x,&y);
-    print_scalar(&d);
+    // power iteration
+    double lambda_power = power_iteration(&x, 0.01, 1000, &A);
+    // shifted inverse
+    double lambda_shifted = shifted_inverse(5.0, &x, 0.01, 1000, &A);
 
-    // matrix vector multiply
-    vector b = matrix_vector_mult(&A,&x);
-    print_vector(&b);
+    // print results
+    printf("Power Iteration Eigenvalue: %.6e\n", lambda_power);
+    printf("Shifted Inverse Eigenvalue: %.6e\n", lambda_shifted);
 
-    // solve Ax = b
-    vector x2 = solve(&A,&b);
-    print_vector(&x2);
+
+    return 0;
 }

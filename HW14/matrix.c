@@ -170,7 +170,7 @@ vector solve(const matrix* A, const vector* b) {
     for (int i = 1; i <=(size-1); i++) { // loops over each column
         // select larges pivot
         int p = i; double maxA = -100.0e0;
-        for (int j = j; j <= size; j++) {
+        for (int j = i; j <= size; j++) {
             double tmp = fabs(mgetp(A,j,i));
             if ( tmp > maxA ) {
                 maxA = tmp;
@@ -201,7 +201,7 @@ vector solve(const matrix* A, const vector* b) {
         for (int j = i+1; j <= size; j++) {
             double m = mgetp(A,j,i)/mgetp(A,i,i);
             for (int k = i; k <= size; k++) {
-                mgetp(A,j,k) -= m*mgetp(A,i,k);
+                mgetp(A,j,k) -= m * mgetp(A,i,k);
             }
             vgetp(b,j) -= m*vgetp(b,i);
         }
@@ -231,7 +231,10 @@ double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A) {
     double lambda_0 = 0.0e0;
     double lambda_1 = 0.0e0;
 
-    for (int iter = 1; iter <= MaxIters; iter++) {
+    int k = 0;
+    int mstop = 0;
+
+    while (mstop==0) {
         // multiply
         v_1 = matrix_vector_mult(A,v_0);
 
@@ -251,7 +254,7 @@ double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A) {
 
         // check convergence
         if (fabs(lambda_1-lambda_0) < TOL) {
-            break;
+            mstop = 1;
         }
 
         lambda_0 = lambda_1;
