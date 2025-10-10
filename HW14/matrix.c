@@ -222,6 +222,8 @@ vector solve(const matrix* A, const vector* b) {
     return x;
 }
 
+// Method that implements the power iteration algorithm with input vector v_0 and matrix A, assuming A is square and the size of v_0 matches the dimensions of A. 
+// Seems to have better accuracy and convergence speed compared with shifted inverse method implementation below.
 double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A) {
     const int size = v_0->size;
     assert(A->rows==A->cols);
@@ -234,13 +236,13 @@ double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A) {
     int k = 0;
     int mstop = 0;
 
-    while (mstop==0) {
+    while (mstop==0 && k < MaxIters) {
         // multiply
         v_1 = matrix_vector_mult(A,v_0);
 
         // normalize
         double norm = 0.0e0;
-        for (int i = 1; i <= size; i++) {
+        for (int i = 0; i <= size; i++) {
             norm += vget(v_1, i) * vget(v_1, i);
         }
         norm = sqrt(norm);
@@ -263,11 +265,15 @@ double power_iteration(vector* v_0, double TOL, int MaxIters, matrix* A) {
         for (int i = 1; i <= size; i++) {
             vgetp(v_0,i) = vget(v_1,i);
         }
+
+        k++;
     }
 
+    printf("Power Iteration converged in %d iterations.\n", k);
     return lambda_1;
 }
 
+// Shifted inverse method implementation with input vector v_0 and matrix A, assuming A is square and the size of v_0 matches the dimensions of A.
 double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix* A) {
     const int size = v_0->size;
     assert(A->rows==A->cols);
@@ -275,8 +281,8 @@ double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix*
 
     // form A - mu*I
     matrix A_shift = new_matrix(size,size);
-    for (int i = 1; i <= size; i++) {
-        for (int j = 1; j <= size; j++) {
+    for (int i = 0; i <= size; i++) {
+        for (int j = 0; j <= size; j++) {
             if (i==j) {
                 mget(A_shift,i,j) = mgetp(A,i,j) - mu;
             }
@@ -290,17 +296,20 @@ double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix*
     double lambda_0 = 0.0e0;
     double lambda_1 = 0.0e0;
 
-    for (int iter = 1; iter <= MaxIters; iter++) {
+    int k = 0;
+    int mstop = 0;
+
+    while (mstop == 0 && k < MaxIters) {
         // solve (A-mu*I)v_1 = v_0
         v_1 = solve(&A_shift,v_0);
 
         // normalize
         double norm = 0.0e0;
-        for (int i = 1; i <= size; i++) {
+        for (int i = 0; i <= size; i++) {
             norm += vget(v_1, i) * vget(v_1, i);
         }
         norm = sqrt(norm);
-        for (int i = 1; i <= size; i++) {
+        for (int i = 0; i <= size; i++) {
             vget(v_1,i) /= norm;
         }
 
@@ -316,10 +325,13 @@ double shifted_inverse(double mu, vector* v_0, double TOL, int MaxIters, matrix*
         lambda_0 = lambda_1;
 
         // update
-        for (int i = 1; i <= size; i++) {
+        for (int i = 0; i <= size; i++) {
             vgetp(v_0,i) = vget(v_1,i);
         }
+
+        k++;
     }
 
+    printf("Shifted Inverse converged in %d iterations.\n", k);
     return lambda_1;
 }

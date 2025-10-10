@@ -41,9 +41,9 @@ int main() {
     print_vector(&x);
 
     // power iteration
-    double lambda_power = power_iteration(&x, 0.01, 1000, &A);
+    double lambda_power = power_iteration(&x, 0.00001, 1000, &A);
     // shifted inverse
-    double lambda_shifted = shifted_inverse(5.0, &x, 0.01, 1000, &A);
+    double lambda_shifted = shifted_inverse(5.0, &x, 0.00001, 1000, &A);
 
     // print results
     printf("Power Iteration Eigenvalue: %.6e\n", lambda_power);
