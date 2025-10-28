@@ -51,6 +51,12 @@ int main(int argc, char* argv[]) {
     double coarse_end = omp_get_wtime();
     double coarse_time = coarse_end - coarse_start;
 
+    // validate that squared vector components add to 1
+    double vec_sum = 0.0;
+    for (int i = 1; i <= N; i++) {
+        vec_sum += vget(v1, i);
+    }
+
     // print results
     fprintf(fptr, "Results for fine-grained:\n");
     fprintf(fptr, "v[i] = %lf\n", vget(v1, 1));
@@ -58,7 +64,10 @@ int main(int argc, char* argv[]) {
 
     fprintf(fptr, "Results for coarse-grained:\n");
     fprintf(fptr, "v[i] = %lf\n", vget(v1, 1));
-    fprintf(fptr, "Total wall time: %lf\n", coarse_time);    
+    fprintf(fptr, "Total wall time: %lf\n\n", coarse_time);  
+    
+    fprintf(fptr, "Validation of 2nd norm\n");
+    fprintf(fptr, "Sum of (v[i])^2: %lf", vec_sum);
 
     fclose(fptr);    
 

@@ -1,12 +1,15 @@
-Number of threads: 16
+Number of threads: 8
 Initial vector (uniform values)
 Size (N) = 10000
 v[i] = 1.000000
 
 Results for fine-grained:
 v[i] = 0.000100
-Total wall time: 0.000438
+Total wall time: 0.000367
 
 Results for coarse-grained:
 v[i] = 0.000100
-Total wall time: 0.000013
+Total wall time: 0.000010
+
+Validation of 2nd norm
+Sum of (v[i])^2: 1.000000
