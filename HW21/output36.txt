@@ -1,0 +1,49 @@
+export TMOUT=5400
+export TMPDIR=/tmp
+export PTMPDIR=
+export APPTAINER_BINDPATH=/work:/work,/lustre:/lustre,/scratch:/scratch,/etc/hosts:/etc/hosts
+export APPTAINER_TMPDIR=/tmp
+export APPTAINER_CACHEDIR=/tmp
+export XDG_RUNTIME_DIR=/tmp
+ Hello from process  0 of 36!
+ Hello from process  1 of 36!
+ Hello from process  2 of 36!
+ Hello from process  3 of 36!
+ Hello from process  4 of 36!
+ Hello from process  5 of 36!
+ Hello from process  6 of 36!
+ Hello from process  7 of 36!
+ Hello from process  8 of 36!
+ Hello from process  9 of 36!
+ Hello from process 10 of 36!
+ Hello from process 11 of 36!
+ Hello from process 12 of 36!
+ Hello from process 13 of 36!
+ Hello from process 14 of 36!
+ Hello from process 15 of 36!
+ Hello from process 16 of 36!
+ Hello from process 17 of 36!
+ Hello from process 18 of 36!
+ Hello from process 19 of 36!
+ Hello from process 20 of 36!
+ Hello from process 21 of 36!
+ Hello from process 22 of 36!
+ Hello from process 23 of 36!
+ Hello from process 24 of 36!
+ Hello from process 25 of 36!
+ Hello from process 26 of 36!
+ Hello from process 27 of 36!
+ Hello from process 28 of 36!
+ Hello from process 29 of 36!
+ Hello from process 30 of 36!
+ Hello from process 31 of 36!
+ Hello from process 32 of 36!
+ Hello from process 33 of 36!
+ Hello from process 34 of 36!
+ Hello from process 35 of 36!
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 0 PID 3414822 RUNNING AT nova18-wide-38
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
