@@ -1,0 +1,4 @@
+nova-login-2:rank0.main.exe: Unable to alloc send buffer MR on mlx5_0: Cannot allocate memory
+nova-login-2:rank0.main.exe: Unable to allocate UD send buffer pool
+nova-login-2:rank1.main.exe: Unable to alloc send buffer MR on mlx5_0: Cannot allocate memory
+nova-login-2:rank1.main.exe: Unable to allocate UD send buffer pool
