@@ -5,7 +5,5 @@ export APPTAINER_BINDPATH=/work:/work,/lustre:/lustre,/scratch:/scratch,/ptmp:/p
 export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
- Hello from process  0 of  4!
- Hello from process  1 of  4!
- Hello from process  2 of  4!
- Hello from process  3 of  4!
+
+Total wall time: 5.584519

@@ -13,11 +13,8 @@
 module purge
 module load intel
 
-make
+mpirun -np 1 ./main.exe 100 > test.txt
 
-mpirun -np 2 ./main.exe > output2.txt
-mpirun -np 4 ./main.exe > output4.txt
-mpirun -np 18 ./main.exe > output16.txt
-mpirun -np 36 ./main.exe > output36.txt
 
-make clean
+
+# ./main.exe > output.txt
