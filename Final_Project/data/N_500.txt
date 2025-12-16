@@ -6,10 +6,10 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 1
 
-Total wall time: 20.962023
+Total wall time: 0.051032
 
 export TMOUT=5400
 export TMPDIR=/tmp
@@ -19,10 +19,10 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 2
 
-Total wall time: 11.243024
+Total wall time: 0.029176
 
 export TMOUT=5400
 export TMPDIR=/tmp
@@ -32,10 +32,10 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 4
 
-Total wall time: 6.790155
+Total wall time: 0.020312
 
 export TMOUT=5400
 export TMPDIR=/tmp
@@ -45,10 +45,10 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 8
 
-Total wall time: 5.285490
+Total wall time: 0.018967
 
 export TMOUT=5400
 export TMPDIR=/tmp
@@ -58,10 +58,10 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 16
 
-Total wall time: 6.318944
+Total wall time: 0.027615
 
 export TMOUT=5400
 export TMPDIR=/tmp
@@ -71,8 +71,8 @@ export APPTAINER_TMPDIR=/tmp
 export APPTAINER_CACHEDIR=/tmp
 export XDG_RUNTIME_DIR=/tmp
 
-Matrix size: 10000
+Matrix size: 500
 Number of processes: 32
 
-Total wall time: 10.358313
+Total wall time: 0.059496
 

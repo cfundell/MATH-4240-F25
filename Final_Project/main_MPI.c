@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 
     // Create MPI_MATRIX datatype on each rank
     MPI_Datatype MPI_MATRIX;
-    create_MPI_matrix_header(&MPI_MATRIX);
+    create_MPI_matrix_header_type(&MPI_MATRIX);
 
     // Get start time 
     double time_start;
@@ -145,12 +145,13 @@ void get_input(int argc, char* argv[], const int my_rank, const int comm_sz, int
     }
 }
 
+
 void create_MPI_matrix_header_type(MPI_Datatype *MPI_MATRIX)
 {
     int blocklengths[2] = {1, 1};
-    MPI_Aint displacements[2];
     MPI_Datatype types[2] = {MPI_INT, MPI_INT};
 
+    MPI_Aint displacements[2];
     displacements[0] = offsetof(matrix, rows);
     displacements[1] = offsetof(matrix, cols);
 
